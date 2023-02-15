@@ -1,91 +1,114 @@
+"use client"
+
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
+import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import React, { useState } from 'react'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const [state, setState] = useState("")
+  const [stateChosen, setStateChosen] = useState({
+    id: "",
+    value: ""
+  })
+
+  const updateStateSelect = (event) => {
+    console.log(event.target.value)
+    setState(event.target.value)
+  }
+
+  const handleStateSubmit = () => {
+    console.log("Inside handleStateSubmit")
+    for(let i = 0; i<stateList.length; i++) {
+      if(state === stateList[i].id) {
+        console.log("State matched: " + state + " " + stateList[i].id)
+        setStateChosen({
+          id: stateList[i].id,
+          value: stateList[i].value
+        })
+      }
+    }
+  }
+
+  const stateList = [
+    {id: "ak", value: "Alaska"},
+    {id: "ar", value: "Arkansas"},
+    {id: "az", value: "Arizona"},
+    {id: "ca", value: "California"},
+    {id: "co", value: "Colorado"},
+    {id: "fl", value: "Florida"},
+    {id: "hi", value: "Hawaii"},
+    {id: "id", value: "Idaho"},
+    {id: "ky", value: "Kentucky"},
+    {id: "in", value: "Indiana"},
+    {id: "me", value: "Maine"},
+    {id: "mi", value: "Michigan"},
+    {id: "mn", value: "Minnesota"},
+    {id: "mo", value: "Missouri"},
+    {id: "mt", value: "Montana"},
+    {id: "nv", value: "Nevada"},
+    {id: "nm", value: "New Mexico"},
+    {id: "nd", value: "North Dakota"},
+    {id: "nc", value: "North Carolina"},
+    {id: "oh", value: "Ohio"},
+    {id: "or", value: "Oregon"},
+    {id: "sc", value: "South Carolina"},
+    {id: "sd", value: "South Dakota"},
+    {id: "tn", value: "Tennessee"},
+    {id: "tx", value: "Texas"},
+    {id: "ut", value: "Utah"},
+    {id: "va", value: "Virginia"},
+    {id: "wa", value: "Washington"},
+    {id: "wv", value: "West Virginia"},
+    {id: "wy", value: "Wyoming"}
+  ]
+
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+  <Grid
+    container
+    direction="row"
+    alignItems="center"
+    spacing={8}
+  >
+    <Grid item xs={4}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">State Selection</InputLabel>
+        <Select
+          labelId="State Selection"
+          id="state-selection"
+          value={state}
+          label="state"
+          onChange={updateStateSelect}
         >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <MenuItem value={"oh"}>Ohio</MenuItem>
+          <MenuItem value={"ca"}>California</MenuItem>
+          <MenuItem value={"nc"}>North Carolina</MenuItem>
+        </Select>
+      </FormControl>
+    </Grid>
+    
+    <Grid item xs={4}>
+      <Box>
+        <Button variant="contained"
+          onClick={handleStateSubmit}
+        >Submit</Button>
+      </Box>
+    </Grid>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
+    <Grid item xs={4}>
+      <h1>{stateChosen.value}</h1>
+    </Grid>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+  </Grid>
+
     </main>
   )
 }
