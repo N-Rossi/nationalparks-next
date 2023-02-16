@@ -3,19 +3,24 @@
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
-import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem, List, ListItem, ListItemText, Divider } from '@mui/material'
 import React, { useState } from 'react'
+import { stateList } from './stateList'
+import axios from 'axios'
+import { DataGrid} from '@mui/x-data-grid'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
 
+  // use States
   const [state, setState] = useState("")
   const [stateChosen, setStateChosen] = useState({
     id: "",
     value: ""
   })
+  const [placesData, setPlacesData] = useState([])
 
   const updateStateSelect = (event) => {
     console.log(event.target.value)
@@ -33,40 +38,21 @@ export default function Home() {
         })
       }
     }
+    retrieveParksInfo(stateChosen.id)
   }
 
-  const stateList = [
-    {id: "ak", value: "Alaska"},
-    {id: "ar", value: "Arkansas"},
-    {id: "az", value: "Arizona"},
-    {id: "ca", value: "California"},
-    {id: "co", value: "Colorado"},
-    {id: "fl", value: "Florida"},
-    {id: "hi", value: "Hawaii"},
-    {id: "id", value: "Idaho"},
-    {id: "ky", value: "Kentucky"},
-    {id: "in", value: "Indiana"},
-    {id: "me", value: "Maine"},
-    {id: "mi", value: "Michigan"},
-    {id: "mn", value: "Minnesota"},
-    {id: "mo", value: "Missouri"},
-    {id: "mt", value: "Montana"},
-    {id: "nv", value: "Nevada"},
-    {id: "nm", value: "New Mexico"},
-    {id: "nd", value: "North Dakota"},
-    {id: "nc", value: "North Carolina"},
-    {id: "oh", value: "Ohio"},
-    {id: "or", value: "Oregon"},
-    {id: "sc", value: "South Carolina"},
-    {id: "sd", value: "South Dakota"},
-    {id: "tn", value: "Tennessee"},
-    {id: "tx", value: "Texas"},
-    {id: "ut", value: "Utah"},
-    {id: "va", value: "Virginia"},
-    {id: "wa", value: "Washington"},
-    {id: "wv", value: "West Virginia"},
-    {id: "wy", value: "Wyoming"}
-  ]
+  const retrieveParksInfo = async (stateId) => {
+    await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq`).then(
+      res => {
+        const places = res.data
+        let placesFixed = places.data
+        console.log("Places Fixed: ", placesFixed)
+
+        setPlacesData(placesFixed)
+      }
+    )
+    console.log(placesData)
+  }
 
 
   return (
@@ -88,9 +74,14 @@ export default function Home() {
           label="state"
           onChange={updateStateSelect}
         >
-          <MenuItem value={"oh"}>Ohio</MenuItem>
-          <MenuItem value={"ca"}>California</MenuItem>
-          <MenuItem value={"nc"}>North Carolina</MenuItem>
+          <MenuItem value="choose" disabled>
+            -- Select State --
+          </MenuItem>
+          {
+            stateList.map((state) => {
+              return <MenuItem key={state.id} value={state.id}>{state.value}</MenuItem>
+            })
+          }
         </Select>
       </FormControl>
     </Grid>
@@ -104,7 +95,18 @@ export default function Home() {
     </Grid>
 
     <Grid item xs={4}>
-      <h1>{stateChosen.value}</h1>
+      <List component="nav">
+        {
+          placesData.map((place) => {
+            return <div>
+            <ListItem divider>
+              <a href={place.url} key={place.id}>{place.title}</a>
+            </ListItem>
+            <Divider />
+            </div>
+          })
+        }
+      </List>
     </Grid>
 
   </Grid>
