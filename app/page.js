@@ -3,10 +3,11 @@
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
-import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem, List, ListItem, ListItemText, Divider } from '@mui/material'
 import React, { useState } from 'react'
 import { stateList } from './stateList'
 import axios from 'axios'
+import { DataGrid} from '@mui/x-data-grid'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,7 +20,7 @@ export default function Home() {
     id: "",
     value: ""
   })
-  const [placesData, setPlacesData] = useState()
+  const [placesData, setPlacesData] = useState([])
 
   const updateStateSelect = (event) => {
     console.log(event.target.value)
@@ -44,11 +45,13 @@ export default function Home() {
     await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq`).then(
       res => {
         const places = res.data
-        setPlacesData({places})
+        let placesFixed = places.data
+        console.log("Places Fixed: ", placesFixed)
+
+        setPlacesData(placesFixed)
       }
     )
-    // console.log(placesData.places.data[1].title)
-    console.log(placesData.places.data)
+    console.log(placesData)
   }
 
 
@@ -92,7 +95,18 @@ export default function Home() {
     </Grid>
 
     <Grid item xs={4}>
-      <h1>{stateChosen.value}</h1>
+      <List component="nav">
+        {
+          placesData.map((place) => {
+            return <div>
+            <ListItem divider>
+              <a href={place.url} key={place.id}>{place.title}</a>
+            </ListItem>
+            <Divider />
+            </div>
+          })
+        }
+      </List>
     </Grid>
 
   </Grid>
