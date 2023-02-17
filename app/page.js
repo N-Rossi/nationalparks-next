@@ -6,8 +6,10 @@ import styles from './page.module.css'
 import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem, Divider } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { stateList } from './stateList'
+import { stateInfo } from './results/stateInfo'
 import axios from 'axios'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { useRouter } from 'next/navigation'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,7 +22,8 @@ export default function Home() {
     id: "",
     value: ""
   })
-  const [placesData, setPlacesData] = useState([])
+
+  const router = useRouter()
 
   useEffect(() => {
     if(stateChosen.id !== "" && stateChosen.value !== "") {
@@ -51,7 +54,7 @@ export default function Home() {
 
   const retrieveParksInfo = async (stateId) => {
     let placesFixedOut
-    await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq&limit=50`).then(
+    await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq&limit=10`).then(
       res => {
         const places = res.data
         let placesFixed = places.data
@@ -60,8 +63,13 @@ export default function Home() {
         placesFixedOut = placesFixed
       }
     )
-    console.log(placesFixedOut)
-    setPlacesData(placesFixedOut)
+    // setPlacesData(placesFixedOut)
+    stateInfo.splice(0, stateInfo.length)
+    for(let i=0; i<placesFixedOut.length; i++) {
+      stateInfo.push(placesFixedOut[i])
+    }
+    console.log(stateInfo)
+    router.push('/results')
   }
 
   const theme = createTheme({
