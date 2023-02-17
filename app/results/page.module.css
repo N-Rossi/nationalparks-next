@@ -1,75 +1,11 @@
-.listItemText {
-  font-size: 24px;
-  text-align: center;
-}
-
 .mainContainer {
-  background-color: #EBDBCD;
+  background-image: linear-gradient(to right, #3F5346, #BABDB2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+  overflow: hidden;
 }
 
-.SelectionContainer {
-  margin: 0px auto;
-  align-items: center;
-}
-
-.submitButtonContainer {
-  margin: 0px auto;
-  text-align: center;
-  align-items: center;
-}
-
-.listGridContainer {
-  margin: 0px auto;
-  text-align: center;
-  align-items: center;
-}
-
-.listGridItem {
-  margin: 0px auto;
-  text-align: center;
-  align-items: center;
-  border: 2px solid black;
-}
-
-.innerGridContainer {
-  margin: 0px auto;
-  text-align: center;
-}
-
-.innerGridCard {
-  width: 50%;
-  margin: auto;
-  margin-bottom: 10px;
-  padding: 10px;
-  text-align: center;
-  border: 1px solid black;
-  border-radius: 15px;
-}
-
-.innerGridDiv {
-  margin: auto;
-  margin-bottom: 10px;
-  padding: 10px;
-  text-align: center;
-}
-
-.gridContainer {
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.card {
-  min-width: 275px;
-  background-color: #9BA59C;
-}
-
-.cardTitle {
-  font-size: 24px;
-  color: black;
-}
