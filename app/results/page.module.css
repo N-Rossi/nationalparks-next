@@ -1,5 +1,6 @@
 .listItemText {
   font-size: 24px;
+  text-align: center;
 }
 
 .mainContainer {
@@ -23,15 +24,52 @@
   align-items: center;
 }
 
-.resultList {
+.listGridContainer {
   margin: 0px auto;
   text-align: center;
   align-items: center;
-  border: 5px solid black;
 }
 
-.emptyResultList {
+.listGridItem {
   margin: 0px auto;
   text-align: center;
   align-items: center;
+  border: 2px solid black;
+}
+
+.innerGridContainer {
+  margin: 0px auto;
+  text-align: center;
+}
+
+.innerGridCard {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.innerGridDiv {
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.gridContainer {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.card {
+  min-width: 275px;
+  background-color: #9BA59C;
+}
+
+.cardTitle {
+  font-size: 24px;
+  color: black;
 }
