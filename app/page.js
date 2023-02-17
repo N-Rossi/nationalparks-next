@@ -11,7 +11,6 @@ import axios from 'axios'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useRouter } from 'next/navigation'
 
-
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
