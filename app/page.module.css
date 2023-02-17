@@ -3,6 +3,11 @@
   font-weight: bold;
   text-decoration: underline;
   font-size: 75px;
+  color: #CE5C08;
+}
+
+.text {
+  color: #CE5C08;
 }
 
 .box {
@@ -18,6 +23,7 @@
 
 .innerBox {
   font-weight: bold;
+  color: #CE5C08;
 }
 
 .mainContainer {

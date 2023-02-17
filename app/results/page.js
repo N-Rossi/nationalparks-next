@@ -3,41 +3,49 @@
 
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
-import { Grid, Card, CardContent, Typography, Divider } from '@mui/material'
-import React, { useState, useEffect } from 'react'
-import { stateList } from './stateList'
+import { ImageList, ImageListItem, ListSubheader, ImageListItemBar, IconButton, Button } from '@mui/material'
 import { stateInfo } from './stateInfo'
-import axios from 'axios'
+
 
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
-
-  // use States
-  const [state, setState] = useState("")
+export default function Results() {
 
   return (
     <main className={styles.mainContainer}>
 
-      <Grid container spacing={4} justify="center" className={styles.gridContainer}>
+      <ImageList sx={{width: 1000, height: 810}}>
+        <ImageListItem key="Subheader" cols={2}>
+          <ListSubheader component="div">Places to Visit!</ListSubheader>
+        </ImageListItem>
         {
           stateInfo.map((place) => {
-            return <Grid item xs={12} sm={6} md={4} key={place.id}>                  
-              <Card className={styles.card}>
-                <CardContent>
-                  <Typography className={styles.cardTitle} gutterBottom color="textSecondary">
-                    {place.title}
-                  </Typography>
-                  <br/>
-                  
-                  <a href={place.url} target="_blank" key={place.id}>{place.title}</a>
-                </CardContent>
-              </Card>
-            </Grid>
+            return <ImageListItem key={place.id}> 
+              <img
+                src={`${place.images[0].url}?w=248fit=crop&auto=format`}
+                srcSet={`${place.images[0].url}?w=248fit=crop&auto=format&dpr=2 2x`}
+                alt={place.title}
+                loading="lazy"
+              />
+              <ImageListItemBar
+                title={place.title}
+                actionIcon={
+                  <IconButton
+                    sx={{color: 'rgba(255, 255, 255, 0.54)'}}
+                    aria-label={`info about ${place.title}`}
+                    onClick={ () => {
+                      window.open(`${place.url}`, '_blank')
+                    }}
+                  >
+                    <Button variant="contained">Learn more!</Button>
+                  </IconButton>
+                }
+              />
+            </ImageListItem>
           })
         }
-      </Grid>
+      </ImageList>
     </main>
 
   )

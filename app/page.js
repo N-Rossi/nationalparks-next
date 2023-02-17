@@ -54,7 +54,7 @@ export default function Home() {
 
   const retrieveParksInfo = async (stateId) => {
     let placesFixedOut
-    await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq&limit=10`).then(
+    await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq&limit=25`).then(
       res => {
         const places = res.data
         let placesFixed = places.data
@@ -89,7 +89,7 @@ export default function Home() {
 
         <Box 
           p={5} className={styles.innerBox}>
-            <h1>Where would you like to go?</h1>
+            <h1 className={styles.text}>Where would you like to go?</h1>
             <Divider/>
         </Box>
 
@@ -102,7 +102,7 @@ export default function Home() {
         >
           <Grid item xs={8} className={styles.SelectionContainer}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">State Selection</InputLabel>
+              <InputLabel className={styles.text} id="demo-simple-select-label">State Selection</InputLabel>
               <Select
                 labelId="State Selection"
                 id="state-selection"
@@ -110,12 +110,12 @@ export default function Home() {
                 label="state"
                 onChange={updateStateSelect}
               >
-                <MenuItem value="choose" disabled>
+                <MenuItem className={styles.text} value="choose" disabled>
                   -- Select State --
                 </MenuItem>
                 {
                   stateList.map((state) => {
-                    return <MenuItem key={state.id} value={state.id}>{state.value}</MenuItem>
+                    return <MenuItem className={styles.text} key={state.id} value={state.id}>{state.value}</MenuItem>
                   })
                 }
               </Select>
