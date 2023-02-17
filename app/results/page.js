@@ -18,13 +18,14 @@ export default function Results() {
 
       <ImageList sx={{width: 1000, height: 810}}>
         <ImageListItem key="Subheader" cols={2}>
-          <ListSubheader component="div">Places to Visit!</ListSubheader>
+          <ListSubheader className={styles.subheader} component="div"><h2 className={styles.subheaderText}>Places To Visit!</h2></ListSubheader>
         </ImageListItem>
         {
           stateInfo.map((place) => {
+            
             return <ImageListItem key={place.id}> 
               <img
-                src={`${place.images[0].url}?w=248fit=crop&auto=format`}
+                src={`${place.images[0].url}`}
                 srcSet={`${place.images[0].url}?w=248fit=crop&auto=format&dpr=2 2x`}
                 alt={place.title}
                 loading="lazy"
