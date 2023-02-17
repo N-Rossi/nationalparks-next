@@ -3,7 +3,7 @@
 
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
-import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem, List, ListItem, ListItemText, Divider } from '@mui/material'
+import { Grid, Card, CardContent, Typography, Divider } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { stateList } from './stateList'
 import { stateInfo } from './stateInfo'
@@ -20,30 +20,25 @@ export default function Home() {
   return (
     <main className={styles.mainContainer}>
 
-      <Grid
-        container
-        direction="row"
-        alignItems="center"
-        spacing={8}
-        className={styles.mainGrid}
-      >
-        <Grid item xs={12}>
-          <List component="nav"  className={styles.resultList}>
-            {
-              stateInfo.map((place) => {
-                return <div key={place.id}>
-                <ListItem divider>
-                  <a className={styles.listItemText} href={place.url} target="_blank" key={place.id}>{place.title}</a>
-                </ListItem>
-                <Divider />
-                </div>
-              })
-            }
-          </List>
-        </Grid>
-
+      <Grid container spacing={4} justify="center" className={styles.gridContainer}>
+        {
+          stateInfo.map((place) => {
+            return <Grid item xs={12} sm={6} md={4} key={place.id}>                  
+              <Card className={styles.card}>
+                <CardContent>
+                  <Typography className={styles.cardTitle} gutterBottom color="textSecondary">
+                    {place.title}
+                  </Typography>
+                  <br/>
+                  
+                  <a href={place.url} target="_blank" key={place.id}>{place.title}</a>
+                </CardContent>
+              </Card>
+            </Grid>
+          })
+        }
       </Grid>
-
     </main>
+
   )
 }
