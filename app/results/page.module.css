@@ -1,5 +1,9 @@
+.listItemText {
+  font-size: 24px;
+}
+
 .mainContainer {
-  background-color: rgb(144, 163, 224);
+  background-color: #EBDBCD;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
