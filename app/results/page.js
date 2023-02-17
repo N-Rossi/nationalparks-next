@@ -4,6 +4,7 @@
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
 import { ImageList, ImageListItem, ListSubheader, ImageListItemBar, IconButton, Button } from '@mui/material'
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { stateInfo } from './stateInfo'
 
 
@@ -38,7 +39,7 @@ export default function Results() {
                       window.open(`${place.url}`, '_blank')
                     }}
                   >
-                    <Button variant="contained">Learn more!</Button>
+                    <ArrowCircleRightIcon/>
                   </IconButton>
                 }
               />
