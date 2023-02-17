@@ -9,3 +9,10 @@
   overflow: hidden;
 }
 
+.subheader {
+  background-color: #EBDBCD;
+}
+
+.subheaderText {
+  color: #944106;
+}

@@ -4,6 +4,7 @@
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
 import { ImageList, ImageListItem, ListSubheader, ImageListItemBar, IconButton, Button } from '@mui/material'
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { stateInfo } from './stateInfo'
 
 
@@ -17,13 +18,14 @@ export default function Results() {
 
       <ImageList sx={{width: 1000, height: 810}}>
         <ImageListItem key="Subheader" cols={2}>
-          <ListSubheader component="div">Places to Visit!</ListSubheader>
+          <ListSubheader className={styles.subheader} component="div"><h2 className={styles.subheaderText}>Places To Visit!</h2></ListSubheader>
         </ImageListItem>
         {
           stateInfo.map((place) => {
+            
             return <ImageListItem key={place.id}> 
               <img
-                src={`${place.images[0].url}?w=248fit=crop&auto=format`}
+                src={`${place.images[0].url}`}
                 srcSet={`${place.images[0].url}?w=248fit=crop&auto=format&dpr=2 2x`}
                 alt={place.title}
                 loading="lazy"
@@ -38,7 +40,7 @@ export default function Results() {
                       window.open(`${place.url}`, '_blank')
                     }}
                   >
-                    <Button variant="contained">Learn more!</Button>
+                    <ArrowCircleRightIcon/>
                   </IconButton>
                 }
               />
