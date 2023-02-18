@@ -81,60 +81,65 @@ export default function Home() {
 
 
   return (
-    <main className={styles.mainContainer}>
-      <h1 className={styles.title}>Start Exploring</h1>
-      <Box color="white"
-        p={5} className={styles.box}>
+    <>
+      <div className={styles.bgImage}></div>
 
-        <Box 
-          p={5} className={styles.innerBox}>
-            <h1 className={styles.text}>Where would you like to go?</h1>
-            <Divider/>
+      <div className={styles.restOfPage}>
+
+        <h1 className={styles.title}>Start Exploring</h1>
+        <Box color="white"
+          p={5} className={styles.box}>
+
+          <Box 
+            p={5} className={styles.innerBox}>
+              <h1 className={styles.text}>Where would you like to go?</h1>
+              <Divider/>
+          </Box>
+
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            spacing={8}
+            className={styles.mainGrid}
+          >
+            <Grid item xs={8} className={styles.SelectionContainer}>
+              <FormControl fullWidth>
+                <InputLabel className={styles.text} id="demo-simple-select-label">State Selection</InputLabel>
+                <Select
+                  labelId="State Selection"
+                  id="state-selection"
+                  value={state}
+                  label="state"
+                  onChange={updateStateSelect}
+                >
+                  <MenuItem className={styles.text} value="choose" disabled>
+                    -- Select State --
+                  </MenuItem>
+                  {
+                    stateList.map((state) => {
+                      return <MenuItem className={styles.text} key={state.id} value={state.id}>{state.value}</MenuItem>
+                    })
+                  }
+                </Select>
+              </FormControl>
+            </Grid>
+            
+            <Grid item xs={8} className={styles.submitButtonContainer}>
+              <Box>
+                <ThemeProvider theme={theme}>
+                  <Button color="neutral" variant="contained"
+                    onClick={handleStateSubmit}
+                    className={styles.SubmitButton}
+                  >Submit</Button>
+                </ThemeProvider>
+              </Box>
+            </Grid>
+
+          </Grid>
         </Box>
+      </div>
 
-        <Grid
-          container
-          direction="row"
-          alignItems="center"
-          spacing={8}
-          className={styles.mainGrid}
-        >
-          <Grid item xs={8} className={styles.SelectionContainer}>
-            <FormControl fullWidth>
-              <InputLabel className={styles.text} id="demo-simple-select-label">State Selection</InputLabel>
-              <Select
-                labelId="State Selection"
-                id="state-selection"
-                value={state}
-                label="state"
-                onChange={updateStateSelect}
-              >
-                <MenuItem className={styles.text} value="choose" disabled>
-                  -- Select State --
-                </MenuItem>
-                {
-                  stateList.map((state) => {
-                    return <MenuItem className={styles.text} key={state.id} value={state.id}>{state.value}</MenuItem>
-                  })
-                }
-              </Select>
-            </FormControl>
-          </Grid>
-          
-          <Grid item xs={8} className={styles.submitButtonContainer}>
-            <Box>
-              <ThemeProvider theme={theme}>
-                <Button color="neutral" variant="contained"
-                  onClick={handleStateSubmit}
-                  className={styles.SubmitButton}
-                >Submit</Button>
-              </ThemeProvider>
-            </Box>
-          </Grid>
-
-        </Grid>
-      </Box>
-
-    </main>
+    </>
   )
 }
