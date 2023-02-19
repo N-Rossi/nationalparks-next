@@ -119,7 +119,7 @@ export default function Home() {
                   </MenuItem>
                   {
                     stateList.map((state) => {
-                      return <MenuItem className={styles.text} key={state.id} value={state.id}>{state.value}</MenuItem>
+                      return <MenuItem className={styles.selectionText} key={state.id} value={state.id}>{state.value}</MenuItem>
                     })
                   }
                 </Select>
