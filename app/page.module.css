@@ -36,13 +36,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+  opacity: 100%;
 }
 
 .restOfPage {
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 2;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -54,7 +55,7 @@
   text-align: center;
   font-size: 75px;
   color: #BED3B4;
-  -webkit-text-stroke: 1px black; /* width and color */
+  -webkit-text-stroke: .5px black; /* width and color */
 }
 
 .text {
@@ -68,8 +69,8 @@
   margin: 0px auto;
   text-align: center;
   align-items: center;
-  border: 2px solid black;
-  border-radius: 25px;
+  border: 2px solid #CE5C08;
+  /* border-radius: 25px; */
   background-color: #BED3B4;
 }
 

@@ -3,9 +3,13 @@
 
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
-import { ImageList, ImageListItem, ListSubheader, ImageListItemBar, IconButton, Button } from '@mui/material'
+import { ImageList, ImageListItem, ListSubheader, ImageListItemBar, IconButton } from '@mui/material'
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { stateInfo } from './stateInfo'
+import { useRouter } from 'next/navigation'
 
 
 
@@ -13,12 +17,25 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Results() {
 
+  const router = useRouter()
+
   return (
     <main className={styles.mainContainer}>
 
-      <ImageList sx={{width: 1000, height: 810}}>
+      <ImageList sx={{width: 1000, height: 810}} className={styles.imgListContainer}>
         <ImageListItem key="Subheader" cols={2}>
-          <ListSubheader className={styles.subheader} component="div"><h2 className={styles.subheaderText}>Places To Visit!</h2></ListSubheader>
+          <ListSubheader className={styles.subheader} component="div">
+            <h2 className={styles.subheaderText}>Places To Visit!</h2>
+            <IconButton
+              className={styles.subHeaderButton}
+              aria-label={'Return to Home Page'}
+              onClick={ () => {
+                router.push('/')
+              }}
+            >
+              <HomeRoundedIcon/>
+            </IconButton>
+          </ListSubheader>
         </ImageListItem>
         {
           stateInfo.map((place) => {
