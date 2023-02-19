@@ -20,7 +20,7 @@ export default function Results() {
 
   const router = useRouter()
 
-  return (
+  return ( 
     <main className={styles.mainContainer}>
 
         <ImageListItem key="Subheader" cols={2}>
