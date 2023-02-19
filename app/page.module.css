@@ -59,10 +59,6 @@
   font-family: 'Nunito Sans';
 }
 
-.selectionText {
-  color:black;
-}
-
 .subtext {
   color: #CE5C08;
   font-family: 'Nunito Sans';
@@ -100,30 +96,6 @@
   /* justify-content: space-around; */
 }
 
-.buttonContainerBox {
-  display: flex;
-  justify-content: space-around;
-}
 .SubmitButton {
   color: #3F5346;
-}
-
-.aboutButton {
-  color: red;
-}
-
-.resultList {
-  margin: 0px auto;
-  text-align: center;
-  align-items: center;
-  border: 5px solid black;
-}
-
-.emptyResultList {
-  margin: 0px auto;
-  text-align: center;
-  align-items: center;
-}
-.alertText {
-  color: black;
 }
