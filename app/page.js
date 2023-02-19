@@ -112,14 +112,13 @@ export default function Home() {
                   value={state}
                   label="state"
                   onChange={updateStateSelect}
-                  className={styles.selectionText}
                 >
                   <MenuItem className={styles.text} value="choose" disabled>
                     -- Select State --
                   </MenuItem>
                   {
                     stateList.map((state) => {
-                      return <MenuItem className={styles.selectionText} key={state.id} value={state.id}>{state.value}</MenuItem>
+                      return <MenuItem key={state.id} value={state.id}>{state.value}</MenuItem>
                     })
                   }
                 </Select>
@@ -127,7 +126,7 @@ export default function Home() {
             </Grid>
             
             <Grid item xs={8} className={styles.submitButtonContainer}>
-              <Box className={styles.buttonContainerBox}>
+              <Box>
                 <ThemeProvider theme={theme}>
                   <Tooltip title="Submit Selection">
                     <Button color="neutral" variant="contained"
