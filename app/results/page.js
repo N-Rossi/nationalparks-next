@@ -35,7 +35,7 @@ export default function Results() {
               return <ImageListItem key={place.id} className={styles.imgListItem}> 
                 <img
                   src={`${place.images[0].url}`}
-                  srcSet={`${place.images[0].url}?w=248fit=crop&auto=format&dpr=2 2x`}
+                  srcSet={`${place.images[0].url}`}
                   alt={place.title}
                   loading="lazy"
                   className={styles.image}
