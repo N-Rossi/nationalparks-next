@@ -7,38 +7,9 @@
 }
 
 
-
-.title {
-  padding-bottom: 5%;
-  font-weight: bold;
-  text-decoration: underline;
-  font-size: 75px;
-  color: #CE5C08;
-}
-
-.text {
-  color: #CE5C08;
-  font-family: 'Nunito Sans';
-}
-
-.box {
-  width: 50%;
-  height: 80%;
-  margin: 0px auto;
-  text-align: center;
-  align-items: center;
-  border: 5px solid black;
-  border-radius: 25px;
-  background-color: #BED3B4;
-}
-
-.innerBox {
-  font-weight: bold;
-  color: #CE5C08;
-}
-
 .mainContainer {
-  background-color: #EBDBCD;
+
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,6 +18,74 @@
   min-height: 100vh;
 }
 
+.bgImage {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images8.alphacoders.com/813/thumb-1920-813552.jpg");
+  /* Filter */
+  /* filter: blur(5px);
+  -webkit-filter: blur(5px); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.restOfPage {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.title {
+  padding-top: 10%;
+  padding-bottom: 5%;
+  margin: 0px auto;
+  text-align: center;
+  font-size: 80px;
+  color: #CE5C08;
+}
+
+.text {
+  color: #b65007;
+  font-family: 'Nunito Sans';
+}
+
+.subtext {
+  color: #CE5C08;
+  font-family: 'Nunito Sans';
+  font-size: 25px;
+}
+
+.box {
+  width: 50%;
+  height: 80%;
+  margin: 0px auto;
+  text-align: center;
+  align-items: center;
+  border: 1px solid #CE5C08;
+  /* border-radius: 25px; */
+  background-color: #cacfc8;
+  border-radius: 20px;
+  box-shadow: 3px 3px 15px #CE5C08;
+}
+
+.innerBox {
+  font-weight: bold;
+  color: #CE5C08;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .SelectionContainer {
   margin: 0px auto;
   align-items: center;
@@ -54,11 +93,19 @@
 
 .submitButtonContainer {
   margin: 0px auto;
-  text-align: center;
-  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.buttonContainerBox {
+  display: flex;
+  justify-content: space-around;
 }
 .SubmitButton {
-  color: #3F5346
+  color: #3F5346;
+}
+
+.aboutButton {
+  color: red;
 }
 
 .resultList {
@@ -72,4 +119,7 @@
   margin: 0px auto;
   text-align: center;
   align-items: center;
+}
+.alertText {
+  color: black;
 }

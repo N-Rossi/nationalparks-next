@@ -3,7 +3,8 @@
 
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
-import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem, Divider } from '@mui/material'
+import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem, Divider, Tooltip, Alert } from '@mui/material'
+import InfoIcon from '@mui/icons-material/Info';
 import React, { useState, useEffect } from 'react'
 import { stateList } from './stateList'
 import { stateInfo } from './results/stateInfo'
@@ -53,7 +54,7 @@ export default function Home() {
 
   const retrieveParksInfo = async (stateId) => {
     let placesFixedOut
-    await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq&limit=12`).then(
+    await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq&limit=15`).then(
       res => {
         const places = res.data
         let placesFixed = places.data
@@ -81,60 +82,67 @@ export default function Home() {
 
 
   return (
-    <main className={styles.mainContainer}>
-      <h1 className={styles.title}>Start Exploring</h1>
-      <Box color="white"
-        p={5} className={styles.box}>
+    <>
+      <div className={styles.bgImage}></div>
 
-        <Box 
-          p={5} className={styles.innerBox}>
-            <h1 className={styles.text}>Where would you like to go?</h1>
-            <Divider/>
+      <div className={styles.restOfPage}>
+        <h1 className={styles.title}>Start Exploring!</h1>
+        <Box color="white"
+          p={5} className={styles.box}>
+
+          <Box 
+            p={5} className={styles.innerBox}>
+              <h1 className={styles.text}>What state are you traveling to?</h1>
+              <Divider/>
+          </Box>
+
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            spacing={8}
+            className={styles.mainGrid}
+          >
+            <Grid item xs={8} className={styles.SelectionContainer}>
+              <FormControl fullWidth>
+                <InputLabel className={styles.text} id="demo-simple-select-label">State Selection</InputLabel>
+                <Select
+                  labelId="State Selection"
+                  id="state-selection"
+                  value={state}
+                  label="state"
+                  onChange={updateStateSelect}
+                  className={styles.text}
+                >
+                  <MenuItem className={styles.text} value="choose" disabled>
+                    -- Select State --
+                  </MenuItem>
+                  {
+                    stateList.map((state) => {
+                      return <MenuItem className={styles.text} key={state.id} value={state.id}>{state.value}</MenuItem>
+                    })
+                  }
+                </Select>
+              </FormControl>
+            </Grid>
+            
+            <Grid item xs={8} className={styles.submitButtonContainer}>
+              <Box className={styles.buttonContainerBox}>
+                <ThemeProvider theme={theme}>
+                  <Tooltip title="Submit Selection">
+                    <Button color="neutral" variant="contained"
+                      onClick={handleStateSubmit}
+                      className={styles.SubmitButton}
+                      >Submit</Button>
+                  </Tooltip>
+                </ThemeProvider>
+              </Box>
+            </Grid>
+
+          </Grid>
         </Box>
+      </div>
 
-        <Grid
-          container
-          direction="row"
-          alignItems="center"
-          spacing={8}
-          className={styles.mainGrid}
-        >
-          <Grid item xs={8} className={styles.SelectionContainer}>
-            <FormControl fullWidth>
-              <InputLabel className={styles.text} id="demo-simple-select-label">State Selection</InputLabel>
-              <Select
-                labelId="State Selection"
-                id="state-selection"
-                value={state}
-                label="state"
-                onChange={updateStateSelect}
-              >
-                <MenuItem className={styles.text} value="choose" disabled>
-                  -- Select State --
-                </MenuItem>
-                {
-                  stateList.map((state) => {
-                    return <MenuItem className={styles.text} key={state.id} value={state.id}>{state.value}</MenuItem>
-                  })
-                }
-              </Select>
-            </FormControl>
-          </Grid>
-          
-          <Grid item xs={8} className={styles.submitButtonContainer}>
-            <Box>
-              <ThemeProvider theme={theme}>
-                <Button color="neutral" variant="contained"
-                  onClick={handleStateSubmit}
-                  className={styles.SubmitButton}
-                >Submit</Button>
-              </ThemeProvider>
-            </Box>
-          </Grid>
-
-        </Grid>
-      </Box>
-
-    </main>
+    </>
   )
 }
