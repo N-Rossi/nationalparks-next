@@ -50,13 +50,19 @@
   padding-bottom: 5%;
   margin: 0px auto;
   text-align: center;
-  font-size: 75px;
-  color: #8fa884;
+  font-size: 80px;
+  color: #CE5C08;
 }
 
 .text {
+  color: #b65007;
+  font-family: 'Nunito Sans';
+}
+
+.subtext {
   color: #CE5C08;
   font-family: 'Nunito Sans';
+  font-size: 25px;
 }
 
 .box {
@@ -65,14 +71,18 @@
   margin: 0px auto;
   text-align: center;
   align-items: center;
-  border: 2px solid #CE5C08;
+  border: 1px solid #CE5C08;
   /* border-radius: 25px; */
-  background-color: #BED3B4;
+  background-color: #cacfc8;
+  border-radius: 20px;
+  box-shadow: 3px 3px 15px #CE5C08;
 }
 
 .innerBox {
   font-weight: bold;
   color: #CE5C08;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -83,11 +93,19 @@
 
 .submitButtonContainer {
   margin: 0px auto;
-  text-align: center;
-  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.buttonContainerBox {
+  display: flex;
+  justify-content: space-around;
 }
 .SubmitButton {
-  color: #3F5346
+  color: #3F5346;
+}
+
+.aboutButton {
+  color: red;
 }
 
 .resultList {
@@ -101,4 +119,7 @@
   margin: 0px auto;
   text-align: center;
   align-items: center;
+}
+.alertText {
+  color: black;
 }

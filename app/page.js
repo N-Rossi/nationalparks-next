@@ -3,7 +3,8 @@
 
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
-import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem, Divider } from '@mui/material'
+import { Grid, Box, Button, FormControl, InputLabel, Select, MenuItem, Divider, Tooltip, Alert } from '@mui/material'
+import InfoIcon from '@mui/icons-material/Info';
 import React, { useState, useEffect } from 'react'
 import { stateList } from './stateList'
 import { stateInfo } from './results/stateInfo'
@@ -85,14 +86,13 @@ export default function Home() {
       <div className={styles.bgImage}></div>
 
       <div className={styles.restOfPage}>
-
-        <h1 className={styles.title}>Start Exploring</h1>
+        <h1 className={styles.title}>Start Exploring!</h1>
         <Box color="white"
           p={5} className={styles.box}>
 
           <Box 
             p={5} className={styles.innerBox}>
-              <h1 className={styles.text}>Where would you like to go?</h1>
+              <h1 className={styles.text}>What state are you traveling to?</h1>
               <Divider/>
           </Box>
 
@@ -112,6 +112,7 @@ export default function Home() {
                   value={state}
                   label="state"
                   onChange={updateStateSelect}
+                  className={styles.text}
                 >
                   <MenuItem className={styles.text} value="choose" disabled>
                     -- Select State --
@@ -126,12 +127,14 @@ export default function Home() {
             </Grid>
             
             <Grid item xs={8} className={styles.submitButtonContainer}>
-              <Box>
+              <Box className={styles.buttonContainerBox}>
                 <ThemeProvider theme={theme}>
-                  <Button color="neutral" variant="contained"
-                    onClick={handleStateSubmit}
-                    className={styles.SubmitButton}
-                  >Submit</Button>
+                  <Tooltip title="Submit Selection">
+                    <Button color="neutral" variant="contained"
+                      onClick={handleStateSubmit}
+                      className={styles.SubmitButton}
+                      >Submit</Button>
+                  </Tooltip>
                 </ThemeProvider>
               </Box>
             </Grid>

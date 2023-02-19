@@ -3,7 +3,7 @@
 
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
-import { ImageList, ImageListItem, ListSubheader, ImageListItemBar, IconButton } from '@mui/material'
+import { ImageList, ImageListItem, ListSubheader, ImageListItemBar, IconButton, Typography } from '@mui/material'
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
@@ -47,8 +47,10 @@ export default function Results() {
                   srcSet={`${place.images[0].url}?w=248fit=crop&auto=format&dpr=2 2x`}
                   alt={place.title}
                   loading="lazy"
+                  className={styles.image}
                 />
                 <ImageListItemBar
+                  className={styles.image}
                   title={place.title}
                   actionIcon={
                     <IconButton
