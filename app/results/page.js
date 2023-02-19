@@ -41,6 +41,7 @@ export default function Results() {
                   className={styles.image}
                 />
                 <ImageListItemBar
+                  sx={{backgroundColor: 'rgba(0, 0, 0, 0.750)'}}
                   className={styles.image}
                   title={place.title}
                   actionIcon={
