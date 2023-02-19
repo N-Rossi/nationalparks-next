@@ -45,7 +45,6 @@ export default function Results() {
                   title={place.title}
                   actionIcon={
                     <IconButton
-                      sx={{color: 'rgba(255, 255, 255, 0.54)'}}
                       aria-label={`info about ${place.title}`}
                       onClick={ () => {
                         window.open(`${place.url}`, '_blank')
