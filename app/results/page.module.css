@@ -46,16 +46,6 @@
 
 }
 
-.subHeaderButton {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 10px;
-  width: 50px;
-  /* background-color: #c7a892; */
-  border-radius: 15px;
-}
-
 .listItemsContainer {
   display: grid;
   grid-template-columns: repeat(3, 400px);
@@ -73,4 +63,5 @@
 
 .image {
   border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.705);
 }
