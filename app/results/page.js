@@ -26,15 +26,6 @@ export default function Results() {
         <ImageListItem key="Subheader" cols={2}>
           <ListSubheader className={styles.subheader} component="div">
             <h2 className={styles.subheaderText}>Places To Visit!</h2>
-            <IconButton
-              className={styles.subHeaderButton}
-              aria-label={'Return to Home Page'}
-              onClick={ () => {
-                router.push('/')
-              }}
-            >
-              <ArrowBackIosNewIcon/>
-            </IconButton>
           </ListSubheader>
         </ImageListItem>
         <div className={styles.listItemsContainer}>
