@@ -53,7 +53,7 @@ export default function Home() {
 
   const retrieveParksInfo = async (stateId) => {
     let placesFixedOut
-    await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq&limit=12`).then(
+    await axios.get(`https://developer.nps.gov/api/v1/places?stateCode=` + stateId + `&api_key=eJnkCdoOGwmfjjCQTSLBaMugyccloNBRXKDj7kjq&limit=15`).then(
       res => {
         const places = res.data
         let placesFixed = places.data

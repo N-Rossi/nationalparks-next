@@ -22,8 +22,7 @@ export default function Results() {
   return (
     <main className={styles.mainContainer}>
 
-      <ImageList sx={{width: 1000, height: 810}} className={styles.imgListContainer}>
-        <ImageListItem key="Subheader" cols={2}>
+        <ImageListItem key="Subheader" cols={2} className={styles.imgListContainer}>
           <ListSubheader className={styles.subheader} component="div">
             <h2 className={styles.subheaderText}>Places To Visit!</h2>
             <IconButton
@@ -37,34 +36,35 @@ export default function Results() {
             </IconButton>
           </ListSubheader>
         </ImageListItem>
-        {
-          stateInfo.map((place) => {
-            
-            return <ImageListItem key={place.id}> 
-              <img
-                src={`${place.images[0].url}`}
-                srcSet={`${place.images[0].url}?w=248fit=crop&auto=format&dpr=2 2x`}
-                alt={place.title}
-                loading="lazy"
-              />
-              <ImageListItemBar
-                title={place.title}
-                actionIcon={
-                  <IconButton
-                    sx={{color: 'rgba(255, 255, 255, 0.54)'}}
-                    aria-label={`info about ${place.title}`}
-                    onClick={ () => {
-                      window.open(`${place.url}`, '_blank')
-                    }}
-                  >
-                    <ArrowCircleRightIcon/>
-                  </IconButton>
-                }
-              />
-            </ImageListItem>
-          })
-        }
-      </ImageList>
+        <div className={styles.listItemsContainer}>
+          {
+            stateInfo.map((place) => {
+              
+              return <ImageListItem key={place.id} className={styles.imgListItem}> 
+                <img
+                  src={`${place.images[0].url}`}
+                  srcSet={`${place.images[0].url}?w=248fit=crop&auto=format&dpr=2 2x`}
+                  alt={place.title}
+                  loading="lazy"
+                />
+                <ImageListItemBar
+                  title={place.title}
+                  actionIcon={
+                    <IconButton
+                      sx={{color: 'rgba(255, 255, 255, 0.54)'}}
+                      aria-label={`info about ${place.title}`}
+                      onClick={ () => {
+                        window.open(`${place.url}`, '_blank')
+                      }}
+                    >
+                      <ArrowCircleRightIcon/>
+                    </IconButton>
+                  }
+                />
+              </ImageListItem>
+            })
+          }
+        </div>
     </main>
 
   )
