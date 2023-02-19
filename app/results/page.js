@@ -8,6 +8,7 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { stateInfo } from './stateInfo'
 import { useRouter } from 'next/navigation'
 
@@ -22,7 +23,7 @@ export default function Results() {
   return (
     <main className={styles.mainContainer}>
 
-        <ImageListItem key="Subheader" cols={2} className={styles.imgListContainer}>
+        <ImageListItem key="Subheader" cols={2}>
           <ListSubheader className={styles.subheader} component="div">
             <h2 className={styles.subheaderText}>Places To Visit!</h2>
             <IconButton
@@ -32,7 +33,7 @@ export default function Results() {
                 router.push('/')
               }}
             >
-              <HomeRoundedIcon/>
+              <ArrowBackIosNewIcon/>
             </IconButton>
           </ListSubheader>
         </ImageListItem>

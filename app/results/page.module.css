@@ -1,5 +1,6 @@
 .mainContainer {
-  /* background-image: radial-gradient(circle, #BABDB2 1%, #3F5346 55%); */
+  /* background-image: radial-gradient(circle, #BABDB2 1%, #e2af8a 55%); */
+  /* background-image: linear-gradient(to bottom, #9dac75, #e2af8a); */
   /* background-color: #3F5346; */
   /* display: flex;
   flex-direction: column;
@@ -7,35 +8,47 @@
   align-items: center; */
   /* padding: 6rem;
   min-height: 100vh; */
-}
+  /* background-color: #e2af8a; */
+  
 
-.imgListContainer {
-  display: grid;
 }
 
 .subheader {
-  background-color: #BABDB2;
+  /* background-color: #BABDB2; */
   /* background-color: #d8a47c; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://photobest1.com/wp-content/uploads/2017/08/HD-wallpapers-1080p-widescreen-nature-free-download-05.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+
   display: flex; 
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 
+  border-radius: 25px;
+  margin: 10px;
   padding: 100px;
   margin-bottom: 75px ;
   text-align: center;
   color: white;
-  font-size: 30px;
 }
 
 .subheaderText {
   color: #CE5C08;
+  font-size: 70px;
 
 }
 
 .subHeaderButton {
-  align-items: center;
-  /* background-color: black; */
-  color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  width: 50px;
+  /* background-color: #c7a892; */
+  border-radius: 15px;
 }
 
 .listItemsContainer {
@@ -49,5 +62,6 @@
 
 .imgListItem {
   justify-self: stretch;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-radius: 15px;
 }
