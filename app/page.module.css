@@ -7,6 +7,8 @@
 }
 
 
+
+
 .mainContainer {
 
 
@@ -98,4 +100,19 @@
 
 .SubmitButton {
   color: #3F5346;
+}
+
+@media (max-width: 420px) {
+  .box {
+    width: 100%;
+    height: 25%;
+    margin: 0px auto;
+    text-align: center;
+    align-items: center;
+    border: 1px solid #CE5C08;
+    /* border-radius: 25px; */
+    background-color: #cacfc8;
+    border-radius: 20px;
+    box-shadow: 3px 3px 15px #CE5C08;
+  }
 }
