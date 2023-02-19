@@ -59,6 +59,10 @@
   font-family: 'Nunito Sans';
 }
 
+.selectionText {
+  color:#b65007;
+}
+
 .subtext {
   color: #CE5C08;
   font-family: 'Nunito Sans';

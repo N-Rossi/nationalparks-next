@@ -112,7 +112,7 @@ export default function Home() {
                   value={state}
                   label="state"
                   onChange={updateStateSelect}
-                  className={styles.text}
+                  className={styles.selectionText}
                 >
                   <MenuItem className={styles.text} value="choose" disabled>
                     -- Select State --
