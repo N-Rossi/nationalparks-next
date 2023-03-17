@@ -32,7 +32,7 @@ export default function Results() {
           {
             stateInfo.map((place) => {
               
-              return <ImageListItem key={place.id} className={styles.imgListItem}> 
+              return place.images[0].url !== "" ? <ImageListItem key={place.id} className={styles.imgListItem}> 
                 <img
                   src={`${place.images[0].url}`}
                   srcSet={`${place.images[0].url}`}
@@ -55,7 +55,7 @@ export default function Results() {
                     </IconButton>
                   }
                 />
-              </ImageListItem>
+              </ImageListItem> : <></>
             })
           }
         </div>
